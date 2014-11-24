@@ -4,22 +4,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.walk.MainActivity"
-    tools:ignore="MergeRootFrame" >
-
-    <Button
-        android:id="@+id/main_mapbtn"
-        android:layout_width="160dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="400dp"
-        android:text="@+string/map" />
-
-    <Button
-        android:id="@+id/main_btlbtn"
-        android:layout_width="161dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="400dp"
-        android:text="@+string/battle" />
-
-</FrameLayout>
+    tools:ignore="MergeRootFrame" />
 

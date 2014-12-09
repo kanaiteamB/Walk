@@ -9,6 +9,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Map extends Service implements LocationListener {
     int time;
@@ -28,6 +29,7 @@ public class Map extends Service implements LocationListener {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("Map", "スタートコマンド");
         time = intent.getIntExtra("TIME", 5 * 1000 * 60);
+        Log.d("Map","time"+Integer.toString(time));
 
         // エラー原因
         //ロケーション条件設定
@@ -39,7 +41,7 @@ public class Map extends Service implements LocationListener {
         final String provider = lm.getBestProvider(cri, true);
         lm.requestLocationUpdates(provider ,time, 1000*500 , this,
         this.getMainLooper());
-//        Toast.makeText(this, "更新開始", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "更新開始", Toast.LENGTH_LONG).show();
 
         return START_STICKY;
     }

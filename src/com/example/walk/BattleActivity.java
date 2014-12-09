@@ -12,7 +12,7 @@ public class BattleActivity extends Activity {
         if (savedInstanceState == null) {
 
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new Menu_Fragment()).commit();
+                    .add(R.id.battle, new Menu_Fragment()).commit();
         }
     }
 

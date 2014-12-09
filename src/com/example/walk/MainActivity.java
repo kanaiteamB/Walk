@@ -20,12 +20,12 @@ public class MainActivity extends Activity {
         if (savedInstanceState == null) {
             
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new Menu_Fragment()).commit();
+                    .add(R.id.main, new Menu_Fragment()).commit();
         }
         // バックグランド処理を行うスレッドの作成
-/*        back = new Intent(this, Map.class);
+        back = new Intent(this, Map.class);
         back.putExtra("TIME", 5 * 60 * 1000);
-        this.startService(back);*/
+        this.startService(back);
         SharedPreferences sharedpreferences = PreferenceManager
                 .getDefaultSharedPreferences(this);
         ID = sharedpreferences.getInt("ID", 5);

@@ -12,8 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 public class StartActivity extends Activity implements OnClickListener ,AsyncTaskInterface{
-    Button startbtn;
+    ImageButton startbtn;
     Data _Data;
     MyHttpPost myhttppost;
     private ProgressDialog dialog;
@@ -24,7 +25,7 @@ public class StartActivity extends Activity implements OnClickListener ,AsyncTas
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        startbtn = (Button) findViewById(R.id.start_btn);
+        startbtn = (ImageButton) findViewById(R.id.start_btn);
         // ID取得
         SharedPreferences sharedpreferences = PreferenceManager
                 .getDefaultSharedPreferences(this);

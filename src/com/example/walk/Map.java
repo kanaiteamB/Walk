@@ -28,8 +28,8 @@ public class Map extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("Map", "スタートコマンド");
-        time = intent.getIntExtra("TIME", 5 * 1000 * 60);
-        Log.d("Map","time"+Integer.toString(time));
+        time = intent.getIntExtra("TIME", 5 * 1000 );
+        Log.d("Map","time"+String.valueOf(time));
 
         // エラー原因
         //ロケーション条件設定
@@ -42,17 +42,24 @@ public class Map extends Service implements LocationListener {
         lm.requestLocationUpdates(provider ,time, 1000*500 , this,
         this.getMainLooper());
         Toast.makeText(this, "更新開始", Toast.LENGTH_LONG).show();
+        
 
         return START_STICKY;
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        Toast.makeText(this, "change", Toast.LENGTH_LONG).show();
         Log.d("Map", "ロケーションマネージャー");
         contents[1] = String.valueOf(location.getLatitude());
         contents[2] = String.valueOf(location.getLongitude());
         // mhp = new MyHttpPost(contents);
         // mhp.execute(contents);
+
+//        Intent intent = new Intent();
+//        intent.putExtra("Latitude", contents[1]);
+//        intent.putExtra("Longitude", contents[2]);
+//        getBaseContext().sendBroadcast(intent);
     }
 
     @Override
@@ -66,7 +73,7 @@ public class Map extends Service implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+        
     }
 
     @Override

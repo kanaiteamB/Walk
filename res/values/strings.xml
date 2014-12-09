@@ -7,7 +7,7 @@
     <string name="battle">Battle!!</string>
     <string name="map">Map!!</string>
     <string name="main">Main!!</string>
-    <string name="start">Start!!</string>
+    <string name="start">スタート画面</string>
     
     <!-- 消してはいけない -->
     <string name="action_settings">Settings</string>

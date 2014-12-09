@@ -11,7 +11,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 public class StartActivity extends Activity implements OnClickListener ,AsyncTaskInterface{
     ImageButton startbtn;
@@ -58,6 +57,7 @@ public class StartActivity extends Activity implements OnClickListener ,AsyncTas
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage("通信中");
         dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
         
         if (isConencted(this)) {
             Log.d("Main", "ポスト通信開始");

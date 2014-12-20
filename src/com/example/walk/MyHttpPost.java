@@ -21,40 +21,39 @@ import org.apache.http.protocol.HttpRequestHandler;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class MyHttpPost extends AsyncTask<Data, Void, Void>
+public class MyHttpPost extends AsyncTask<Void, Void, Void>
         implements
             HttpRequestHandler {
     private AsyncTaskInterface _interface;
-    private Data _Data;
-    boolean Debug =true;
+    private ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+    String[] send = new String[3];
+    boolean Debug =false;
+    HttpPost post;
 
-    public MyHttpPost(AsyncTaskInterface ati) {
+    public MyHttpPost(AsyncTaskInterface ati,String var1,String value1,String var2,String value2,String var3,String value3 , String URI) {
         super();
         this._interface = ati;
+        if((var1!=null)&&(value1!=null))
+        params.add(new BasicNameValuePair(var1, value1));
+        if((var2!=null)&&(value2!=null))
+        params.add(new BasicNameValuePair(var2, value2));
+        if((var3!=null)&&(value3!=null))        
+        params.add(new BasicNameValuePair(var3, value3));
+        
+        // ポスト通信先のurlを入力してHttpPostインスタンスの生成        
+        post = new HttpPost(URI);
+    }
+
+    public MyHttpPost(AsyncTaskInterface ati, NameValuePair[] pair, String URI) {
+        super();
+        this._interface = ati;
+        post = new HttpPost(URI);
+        for(NameValuePair i:pair)
+            params.add(i);
     }
 
     @Override
-    protected  Void doInBackground(Data... arg) {
-        _Data = arg[0];
-        if (Debug){
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                // TODO 自動生成された catch ブロック
-                e.printStackTrace();
-            }
-            _Data.ID = 500;
-            return null;
-        }
-
-        // 送るデータをリストに入力
-        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("id", Integer.toString(_Data.ID)));
-        params.add(new BasicNameValuePair("latitude", Integer.toString(_Data.Latitude)));
-        params.add(new BasicNameValuePair("longitude", Integer.toString(_Data.Longitude)));
-
-        // ポスト通信先のurlを入力してHttpPostインスタンスの生成
-        HttpPost post = new HttpPost("10.29.31.145");// "http://kanai.k.ac.jp/TEAM-B");
+    protected  Void doInBackground(Void... arg) {
 
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
@@ -71,13 +70,17 @@ public class MyHttpPost extends AsyncTask<Data, Void, Void>
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(content));
                 try {
-                    StringBuilder buf = new StringBuilder();
+//                    StringBuilder buf = new StringBuilder();
                     String line;
-                    while ((line = reader.readLine()) != null) {
-                        buf.append(line);
+                    int i =0;
+                    while((line = reader.readLine())!=null){
+                        send[i] = line;
+                        i++;
                     }
-
-//                    return Integer.parseInt(buf.toString());
+//                    send[0] = reader.readLine();
+//                    send[1] = reader.readLine();
+//                    send[2] = reader.readLine();
+                    
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
@@ -100,7 +103,7 @@ public class MyHttpPost extends AsyncTask<Data, Void, Void>
 
     @Override
     public void onPostExecute(Void result) {
-        _interface.callback(_Data);
+        _interface.callback(send);
     }
 
     @Override

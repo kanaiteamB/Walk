@@ -1,22 +1,41 @@
 package com.example.walk;
 
+import com.example.walk.monster_status.Monster;
+
 public class Data {
 
     private int exp;
-    // 初期値
-    final int STR = 10;
-    final int VIT = 10;
-    final int AGI = 10;
-    final int LUK = 10;
-    final int HP = 10;
-    final int LV = 1;
+    private int Lv;
 
     //スレッド間の受け渡し用
     int ID = 0;
     int Latitude = 0;
     int Longitude = 0;
-    Data(int ID){
+    private Monster monster;
+    public Data(int ID, Monster monster, int Lv){
         this.ID = ID;
+        this.monster = monster;
+    }
+    public int getSTR() {
+        return monster.getSTRbase() + Lv * monster.getSTRper();
+    }
+    public int getVIT() {
+        return monster.getVITbase() + Lv * monster.getVITper();
+    }
+    public int getAGI() {
+        return monster.getAGIbase() + Lv * monster.getAGIper();
+    }
+    public int getLUK() {
+        return monster.getLUKbase() + Lv * monster.getLUKper();
+    }
+    public int getHP() {
+        return monster.getHPbase() + Lv * monster.getHPper();
+    }
+    public void setHP(){
+        monster.setHP(getHP());
+    }
+    public String getName(){
+        return monster.getName();
     }
 
     void setExp(int t) {
@@ -29,19 +48,5 @@ public class Data {
     int getLv() {
         return exp / 100 + 1;
     }
-    int getSTR() {
-        return 100 * getLv() + STR;
-    }
-    int getVIT() {
-        return 100 * getLv() + VIT;
-    }
-    int getAGI() {
-        return 100 * getLv() + AGI;
-    }
-    int getLUK() {
-        return 100 * getLv() + LUK;
-    }
-    int getHP() {
-        return 100 * getLv() + HP;
-    }
+    
 }

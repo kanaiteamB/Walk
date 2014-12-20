@@ -4,5 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.walk.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/battleSelect"
+        android:textSize="50sp" >
+
+        <requestFocus />
+    </TextView>
+</FrameLayout>
 

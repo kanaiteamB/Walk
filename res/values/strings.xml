@@ -7,8 +7,12 @@
     <string name="battle">Battle!!</string>
     <string name="map">Map!!</string>
     <string name="main">Main!!</string>
+    <string name="ok">OK!!</string>
+    <string name="image">画像が正しく表示されていません</string>
     <string name="start">スタート画面</string>
-    
+    <string name="name">名前を決めてください(namelessは使えません)</string>
+    <string name="battleSelect">対戦相手選択</string>
+    <string name="charchoose">使用キャラを選んでください</string>
     <!-- 消してはいけない -->
     <string name="action_settings">Settings</string>
 </resources>

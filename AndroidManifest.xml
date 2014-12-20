@@ -46,6 +46,14 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
+            android:name="com.example.walk.BattleActiveActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name="com.example.walk.SettingActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
             android:name="com.example.walk.StartActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" >

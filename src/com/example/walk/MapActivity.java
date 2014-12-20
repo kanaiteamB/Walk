@@ -22,15 +22,13 @@ public class MapActivity extends FragmentActivity
             ConnectionCallbacks,
             OnConnectionFailedListener,
             LocationListener {
-    
-    
-    final LocationRequest request = LocationRequest.create().setInterval(5000).setFastestInterval(16).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-    GoogleMap map = null;
-//    MarkerOptions op = new MarkerOptions();
-    LocationClient lc = null;
-    
 
-    
+    final LocationRequest request = LocationRequest.create().setInterval(5000)
+            .setFastestInterval(16)
+            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    GoogleMap map = null;
+    LocationClient lc = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MAPACTIVITY", "スタート");
@@ -42,6 +40,17 @@ public class MapActivity extends FragmentActivity
         if (map != null)
             map.setMyLocationEnabled(true);
         lc = new LocationClient(getApplicationContext(), this, this);
+        UiSettings settings = map.getUiSettings();
+        settings.setMyLocationButtonEnabled(true);
+        map.setOnMyLocationButtonClickListener(new OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                Toast.makeText(getApplicationContext(), "現在位置",
+                        Toast.LENGTH_LONG).show();;
+                return false;
+            }
+        });
+
         if (lc != null)
             lc.connect();
         MapsInitializer.initialize(this);
@@ -50,18 +59,6 @@ public class MapActivity extends FragmentActivity
             getFragmentManager().beginTransaction()
                     .add(R.id.map, new Menu_Fragment()).commit();
         }
-//        op.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
-        UiSettings settings = map.getUiSettings();
-        settings.setMyLocationButtonEnabled(true);
-        map.setOnMyLocationButtonClickListener(
-                new OnMyLocationButtonClickListener() {                    
-                    @Override
-                    public boolean onMyLocationButtonClick() {
-                        // TODO 自動生成されたメソッド・スタブ
-                        Toast.makeText(getApplicationContext(), "現在位置", Toast.LENGTH_LONG).show();;
-                        return false;
-                    }
-                });
     }
 
     @Override
@@ -69,24 +66,16 @@ public class MapActivity extends FragmentActivity
         super.onResume();
     }
     @Override
-    public void onLocationChanged(Location location) {
-//        CameraPosition camerapos = new CameraPosition.Builder()
-//                .target(new LatLng(location.getLatitude(), location
-//                        .getLongitude())).zoom(7.0f).bearing(0).build();
-//        map.animateCamera(CameraUpdateFactory.newCameraPosition(camerapos));
-
-    }
+    public void onLocationChanged(Location location) {}
 
     @Override
     public void onConnected(Bundle arg0) {
         lc.requestLocationUpdates(request, this);
-        // TODO 自動生成されたメソッド・スタブ
 
     }
 
     @Override
     public void onDisconnected() {
-        // TODO 自動生成されたメソッド・スタブ
 
     }
 

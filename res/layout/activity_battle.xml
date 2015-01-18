@@ -1,20 +1,49 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/battle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/home_back"
+    
     tools:context="com.example.walk.MainActivity"
     tools:ignore="MergeRootFrame" >
 
-    <TextView
-        android:id="@+id/editText1"
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.example.walk.Menu_Fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="@string/battleSelect"
-        android:textSize="50sp" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:orientation="vertical" >
 
-        <requestFocus />
-    </TextView>
-</FrameLayout>
+        <TextView
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/battleSelect"
+            android:textSize="50sp" />
 
+         <TextView
+        android:id="@+id/textview12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:text="たかし　デデンネ"
+        android:textSize="30sp" />
+    </LinearLayout>
+
+   
+
+</RelativeLayout>

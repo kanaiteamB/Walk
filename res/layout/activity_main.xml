@@ -4,87 +4,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/home_back"
+    android:orientation="vertical"
     tools:context="com.example.walk.MainActivity"
     tools:ignore="MergeRootFrame" 
-    android:orientation="vertical">
+    >
 
-        <TextView
-            android:id="@+id/main_pname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+    <TextView
             android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/main_pname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/main_charname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+    <TextView
             android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/main_charname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <ImageView
-            android:id="@+id/main_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="50dp"
+    <ImageView
             android:layout_weight="3"
-            android:contentDescription="@string/image"
-            android:src="@drawable/dedenne" />
+        android:id="@+id/main_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/image"
+        android:src="@drawable/dedenne" />
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+            android:layout_weight="1"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/main_hp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:id="@+id/main_hp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/main_str"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/main_vit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/main_str"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
-            android:layout_weight="1" >
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:id="@+id/main_agi"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/main_vit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/main_luk"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_weight="1"
+        >
+
+        <TextView
+            android:id="@+id/main_agi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/main_luk"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.example.walk.Menu_Fragment"
+            android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
